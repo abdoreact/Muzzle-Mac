@@ -76,7 +76,7 @@ void OnAppletUpdate()
         .y = player2.y
     };
 
-    font p2sp = load_font("../font.ttf", "p2sp");
+    font p2sp = load_font("./font.ttf", "p2sp");
     char buf_p1[1024] = EMPTY_STRING;
     char buf_p2[1024] = EMPTY_STRING;
 

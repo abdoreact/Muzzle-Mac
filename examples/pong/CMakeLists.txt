@@ -5,8 +5,9 @@ set(MUZZLE_ROOT "../..")
 set(MUZZLE_LIB_FOLDER ${MUZZLE_ROOT}/deps)
 
 INCLUDE_DIRECTORIES(${MUZZLE_ROOT}/include)
-LINK_DIRECTORIES(${MUZZLE_LIB_FOLDER}/glfw/lib)
+LINK_DIRECTORIES(${MUZZLE_LIB_FOLDER}/glfw/src)
 set(mz_source_dir ${MUZZLE_ROOT}/src)
+
 
 #could use aux_source_directory() but its better to list each file to ensure new files are compiled
 #https://stackoverflow.com/a/25077976/10415312
@@ -34,8 +35,14 @@ message(STATUS "Checking OS")
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     message(STATUS "Checking OS - found (Darwin/MacOS)")
     message(WARNING "Checking OS - warning (Darwin/MacOS support in this CMakeLists.txt is very limited)")
-    
-    TARGET_LINK_LIBRARIES(main glfw CoreVideo OpenGL IOKit Cocoa Carbon)
+    target_link_libraries(main
+    "-framework CoreVideo"
+    "-framework OpenGL"
+    "-framework Cocoa"
+    "-framework Carbon"
+    "-framework IOKit"
+    )
+    TARGET_LINK_LIBRARIES(main glfw3)
 
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     message(STATUS "Checking OS - found (WIN32)")

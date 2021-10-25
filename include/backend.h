@@ -18,8 +18,12 @@
 
 #ifdef MZ_DEPS_USE_GLOBAL
     #include <GLFW/glfw3.h>
+    #include <fontstash.h>
+    #include <glfontstash.h>
 #else
     #include "../deps/glfw/include/GLFW/glfw3.h"
+    #include "../deps/fontstash/fontstash.h"
+    #include "../deps/fontstash/glfontstash.h"
 #endif
 
 #ifdef __cplusplus
